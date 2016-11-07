@@ -33,7 +33,7 @@ build (message:messageList)= insert message (build messageList)
 
 --inorder traversal for MessageTree
 inOrder :: MessageTree -> [LogMessage]
-inOrder Leaf        =[]
+inOrder Leaf          =[]
 inOrder (Node l msg r)=inOrder(l)++[msg]++inOrder(r)
 
 --extracting error messages with severity atleast 50
