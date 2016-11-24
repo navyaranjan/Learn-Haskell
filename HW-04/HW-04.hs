@@ -50,12 +50,10 @@ xor = foldr (\x result -> if x == result then False else True)False
 map' :: (a -> b) -> [a] -> [b]
 map' f = foldr (\x acc -> f x : acc) []
 
-
-
-
+--Exercise 4 : Findinf Primes
 sieveSundaram :: Integer -> [Integer]
-sieveSundaram n =map (\x -> 2*x+1) (filter (`notElem` (map (\(i,j) -> i+j+2*i*j) getIJ)) [1..limit])
+sieveSundaram n =map (\x -> 2*x+1) (filter (`notElem` toBeRemoved) [1..limit])
     where
-        getIJ = [(x,y) | x <- [1..n],y <- [x..n],x+y+2*x*y < n]
-        limit = (fromIntegral n `div` 2) -1
-
+        getIJ       = [(x,y) | x <- [1..n],y <- [x..n],x+y+2*x*y < n]
+        limit       = (fromIntegral n `div` 2) -1
+        toBeRemoved = map (\(i,j) -> i+j+2*i*j) getIJ
